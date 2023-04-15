@@ -11,8 +11,15 @@ window.addEventListener('hashchange', () => {
 });
 
 function updateUI(hash) {
-  /*sections.forEach(section => section.style.position = 'relative');*/
   hyperlinks.forEach(a => a.style.textDecoration = 'none');
+
+
+  setTimeout(() => {
+    sections.forEach(section => section.style.position = 'fixed');
+
+    document.querySelector(`${hash}`).style.position = 'relative';
+  }, 100);
+
 
   let h = hash.replace('#', '.');
   // highlighting anchor tag in navbar

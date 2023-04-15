@@ -20,7 +20,7 @@ body {
 }
 
 a {
-  font-size: 15px;
+  font-size: 16px;
   text-decoration: none;
   color: var(--text);
   font-weight: 700;
@@ -58,9 +58,11 @@ button:active {
   padding: 0 20px;
   z-index: 1;
 }
-.navbar .logo-small{
+
+.navbar .logo-small {
   width: 60px;
 }
+
 .navbar ul {
   position: absolute;
   right: 20px;
@@ -77,9 +79,11 @@ button:active {
 }
 
 /* main-container (Home)*/
+section,
 .main-container {
   width: 100%;
   height: 100vh;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,25 +150,27 @@ button:active {
   height: 100vh;
 }
 
-#map .map-control{
+#map .map-control {
   z-index: 1;
 }
+
 
 .pop-up {
   width: 350px;
   min-height: 100vh;
   background: #fff;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   padding: 30px 20px 0;
   display: none;
   flex-direction: column;
   border-right: 2px solid var(--text);
-  z-index: 2;
+  z-index: 1;
 }
 
-.pop-up label {
+.pop-up label,
+.feedback-container label {
   font-size: 16px;
   color: var(--text);
   font-weight: 700;
@@ -173,9 +179,13 @@ button:active {
 
 .pop-up input,
 .pop-up select,
-.pop-up button {
+.pop-up button,
+.feedback-form input,
+.feedback-form button,
+.feedback-form textarea {
   width: auto;
-  height: 40px;
+  min-height: 40px;
+  max-height: 120px;
   outline: none;
   padding: 0 5px;
   font-size: 16px;
@@ -186,11 +196,25 @@ button:active {
 
 .pop-up button {
   max-width: 150px;
-  background: var(--blue2)
+  background: var(--blue2);
 }
 
-.pop-up input:focus,
-.pop-up select:focus {
+.feedback-container h1 {
+  color: var(--text);
+  font-size: 25px;
+}
+
+.feedback-form textarea {
+  padding: 5px;
+}
+
+.feedback-form button {
+  background: var(--blue2);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
   outline: 5px solid var(--blue2);
 }
 
@@ -205,6 +229,12 @@ button:active {
   right: 10px;
 }
 
+.feedback-form {
+  width: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
 
 /* info-container 
 .info-container {

@@ -20,7 +20,7 @@
       <li><a class="HOME" href="#HOME">Home</a></li>
       <li><a class="MAP" href="#MAP">Map</a></li>
       <li><a class="ABOUT" href="#ABOUT">About</a></li>
-      <li><a class="FEEDBACK" href="#FEEDBACK">Freeback</a></li>
+      <li><a class="FEEDBACK" href="#FEEDBACK">Feedback</a></li>
     </ul>
   </nav>
 
@@ -77,9 +77,22 @@
       </div>
     </div>
   </section>
-  <!--footer-container-->
-  <footer class="footer"></footer>
-  
+  -->
+  <section class="section about-container" id="ABOUT">
+    <h1>About</h1>
+  </section>
+
+  <section class="section feedback-container" id="FEEDBACK">
+    <h1>FEEDBACK</h1>
+    <div class="feedback-form">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" placeholder="Email...">
+      <label for="feedback">Feedback:</label>
+      <textarea name="feedback" id="feedback" cols="10" rows="10" placeholder="Feedback here..."></textarea><br>
+      <button type="submit">Send</button>
+    </div>
+  </section>
+
   <script src="app.js"></script>
   <script src="/frontend/js/map.js"></script>
 </body>
