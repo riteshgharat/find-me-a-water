@@ -147,5 +147,5 @@ saveDataBtn.addEventListener('click', () => {
         popUp.style.display = 'none';
         alert('Thanks you for your contribution ❤');
       }
-    }).catch(err => alert(`Something went wrong ${err}`));
+    });
 });
