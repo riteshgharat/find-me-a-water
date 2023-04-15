@@ -13,7 +13,6 @@ window.addEventListener('hashchange', () => {
 function updateUI(hash) {
   hyperlinks.forEach(a => a.style.textDecoration = 'none');
 
-
   setTimeout(() => {
     sections.forEach(section => section.style.position = 'fixed');
 

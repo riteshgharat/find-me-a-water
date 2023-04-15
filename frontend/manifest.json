@@ -1,0 +1,39 @@
+{
+  "name": "Find Me a Water",
+  "short_name": "Find Me a Water",
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "icons": [
+    {
+      "src": "assets/icons/android-launchericon-512-512.png",
+      "sizes": "512x512"
+  },
+    {
+      "src": "assets/icons/android-launchericon-192-192.png",
+      "sizes": "192x192"
+  },
+    {
+      "src": "assets/icons/android-launchericon-144-144.png",
+      "sizes": "144x144"
+  },
+    {
+      "src": "assets/icons/android-launchericon-96-96.png",
+      "sizes": "96x96"
+  },
+    {
+      "src": "assets/icons/android-launchericon-72-72.png",
+      "sizes": "72x72"
+  },
+    {
+      "src": "assets/icons/android-launchericon-48-48.png",
+      "sizes": "48x48"
+  }
+    ],
+  "start_url": "/index.html",
+  "scope": "/",
+  "lang": "en-US",
+  "background_color": "#ffffff",
+  "theme_color": "#2FC0FF",
+  "orientation": "portrait-primary",
+  "display": "standalone"
+}
