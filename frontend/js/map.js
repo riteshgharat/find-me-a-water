@@ -6,7 +6,7 @@ function initMap() {
   map = new mappls.Map('map', {
     zoom: 3.2
   });
-  /*Added Marker on click*/
+  // Added Marker on click
   map.addListener('dblclick', function(e) {
     console.clear();
     let lngLat = e.lngLat;
@@ -22,13 +22,17 @@ function initMap() {
       popupHtml: `<h3>lat: ${lngLat.lat}<br>lng:${lngLat.lng}</h3>`,
       iconUrl: 'https://apis.mapmyindia.com/map_v3/1.png'
     });
+    // get location and showing pop-up 
     getLoc(lngLat.lat, lngLat.lng);
 
     popUp.style.display = 'flex';
     document.querySelector('#close-btn').addEventListener('click', () => popUp.style.display = 'none');
   });
+
+  // on map load 
   map.addListener('load', () => {
     document.querySelector('.preloader').style.display = 'none';
+    // get data from server
     fetch(`${location.origin}/api/getData`)
       .then(res => res.json())
       .then(data => {
@@ -80,6 +84,7 @@ function getLoc(lat, lng) {
   longitude.value = lng;
 }
 
+// function to save data back to server
 const saveDataBtn = document.querySelector('#save-data-btn');
 
 const typeBtns = document.querySelectorAll('.pop-up .types-con img');
@@ -92,7 +97,6 @@ typeBtns.forEach(typeBtn => {
     })
     typeBtn.style.outline = '5px solid var(--blue2)';
     typeBtn.dataset.click = 'true';
-    console.log(typeBtn.id, typeBtn.dataset.click);
   });
 });
 
@@ -117,6 +121,7 @@ saveDataBtn.addEventListener('click', () => {
     info: info.value,
     iconUrl: iconUrl
   }
+  // function to save data back to server
   fetch(`${location.origin}/api/storeData`, {
       method: "POST",
       headers: {
@@ -124,26 +129,28 @@ saveDataBtn.addEventListener('click', () => {
       },
       body: JSON.stringify(data)
     })
-    .then(res => {
-      console.log(res);
-
-      // adding marker
-      addMarker({
-        lat: data.lat,
-        lng: data.lng,
-        popupHtml: `
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        // adding marker after data is saved
+        addMarker({
+          lat: data.lat,
+          lng: data.lng,
+          popupHtml: `
          <h1>${data.mode}</h1>
          <b>Type: </b>${data.type}<br>
          <b>Lat: </b>${data.lat}<br>
          <b>Lng: </b>${data.lng}<br>
          <b>Qty: </b>${data.qty} Litres<br>
          <b>Info: </b>${data.info}`,
-        iconUrl: `assets/images/${data.iconUrl}`
-      });
+          iconUrl: `assets/images/${data.iconUrl}`
+        });
 
-      popUp.style.display = 'none';
+        popUp.style.display = 'none';
+        alert('Thanks you for your contribution ❤');
+      }
     })
     .catch(error => {
-      alert("There was an error:", error);
+      alert("Something went wrong: ", error);
     });
 });

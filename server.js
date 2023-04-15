@@ -28,7 +28,7 @@ app.post('/api/storeData', (req, res) => {
   jsonData.push(data);
 
   // Write the updated data to the file
-  fs.writeFileSync('databse/data.json', JSON.stringify(jsonData));
+  fs.writeFileSync('database/data.json', JSON.stringify(jsonData));
 
   res.json({ success: true, message: 'Data added successfully' });
 });
