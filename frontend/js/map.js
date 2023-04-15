@@ -8,7 +8,7 @@ function initMap() {
   });
   // Added Marker on click
   map.addListener('dblclick', function(e) {
-    console.clear();
+
     let lngLat = e.lngLat;
     mappls.remove({ map: map, layer: marker });
 
@@ -28,14 +28,14 @@ function initMap() {
     popUp.style.display = 'flex';
     document.querySelector('#close-btn').addEventListener('click', () => popUp.style.display = 'none');
   });
-
   // on map load 
   map.addListener('load', () => {
     document.querySelector('.preloader').style.display = 'none';
-    // get data from server
+    // get data from server 
     fetch(`${location.origin}/api/getData`)
       .then(res => res.json())
-      .then(data => {
+      .then(Data => {
+        let data = Data.mapData;
         for (let i = 0; i < data.length; i++) {
           addMarker({
             lat: data[i].lat,
@@ -51,8 +51,7 @@ function initMap() {
             iconUrl: `assets/images/${data[i].iconUrl}`
           });
         }
-      });
-    console.clear();
+      }).catch(err => alert('Failed to Fetch!'));
   });
 }
 
@@ -130,27 +129,23 @@ saveDataBtn.addEventListener('click', () => {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(data => {
-      if (data.success) {
+    .then(result => {
+      if (result.success) {
         // adding marker after data is saved
         addMarker({
           lat: data.lat,
           lng: data.lng,
           popupHtml: `
-         <h1>${data.mode}</h1>
-         <b>Type: </b>${data.type}<br>
-         <b>Lat: </b>${data.lat}<br>
-         <b>Lng: </b>${data.lng}<br>
-         <b>Qty: </b>${data.qty} Litres<br>
-         <b>Info: </b>${data.info}`,
+          <h1>${data.mode}</h1>
+          <b>Type: </b>${data.type}<br>
+          <b>Lat: </b>${data.lat}<br>
+          <b>Lng: </b>${data.lng}<br>
+          <b>Qty: </b>${data.qty} Litres<br>
+          <b>Info: </b>${data.info}`,
           iconUrl: `assets/images/${data.iconUrl}`
         });
-
         popUp.style.display = 'none';
         alert('Thanks you for your contribution ❤');
       }
-    })
-    .catch(error => {
-      alert("Something went wrong: ", error);
-    });
+    }).catch(err => alert(`Something went wrong ${err}`));
 });
