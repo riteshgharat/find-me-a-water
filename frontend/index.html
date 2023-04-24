@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,7 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
   <!--Manifest and Favicon-->
   <link rel="shortcut icon" type="image/x-icon" href="assets/icons/favicon.ico">
-    <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json">
   <!--Map API Script-->
   <script src="https://apis.mappls.com/advancedmaps/api/7cb6cccd7e6bfb195915e9d779a8fc16/map_sdk?layer=vector&v=3.1&callback=initMap" defer async></script>
 </head>
@@ -34,7 +33,7 @@
   </nav>
 
   <!--Main Section-->
-  <section class="section main-container" id="HOME">
+  <section class="section main-section active" id="HOME">
     <img class="logo" src="assets/images/logo.jpg" alt="logo">
     <h1 class="title">Find Me a Water</h1>
     <a href="#MAP" class="btn map-btn">Map <!--i class="map-svg"></i--></a>
@@ -43,6 +42,24 @@
 
   <!--Map Section-->
   <section class="section map-section" id="MAP">
+    <!--Help Btn-->
+    <img src="assets/ui-images/help.svg" class="help-btn" alt="help-btn">
+    <!--Help Section-->
+    <div class="overlayer">
+      <div class="help-popUp">
+        <div class="help-popUp-content">
+          <h1>FAQ</h1>
+          <button class="help-popUp-btn">×</button>
+          <hr size="2px">
+          <h3>● How to Add a Marker on a Map?</h3>
+          <p>Double-click on the map, fill out the pop-up window, and save to add a marker.</p>
+          <h3>● How to Zoom In or Out on a Map?</h3>
+          <p>Use the scroll button of your mouse or use your fingers on touch screen devices.</p>
+          <h3>● How to Find Information about Water Reservoir?</h3>
+          <p>Click on the marker icon on the map to see information about Water Reservoir.</p>
+        </div>
+      </div>
+    </div>
     <!--PopUp-->
     <div class="pop-up">
       <label>Water Info:</label>
@@ -52,10 +69,18 @@
       </select>
       <label>Type:</label>
       <div class="types-con" id="type">
-        <img id="tap" data-click="false" src="assets/images/tap.png" alt="tap">
-        <img id="well" data-click="false" src="assets/images/well.png" alt="well">
-        <img id="public-water-center" data-click="false" src="assets/images/public-water-center.png" alt="public water center">
-        <img id="water-resources" data-click="false" src="assets/images/water-resources.png" alt="water resources">
+        <picture data-title="Tap">
+          <img id="tap" data-click="false" src="assets/images/tap.png" alt="tap">
+        </picture>
+        <picture data-title="Well">
+          <img id="well" data-click="false" src="assets/images/well.png" alt="well">
+        </picture>
+        <picture data-title="Water Fountain">
+          <img id="public-water-fountain" data-click="false" src="assets/images/public-water-fountain.png" alt="Public Water Fountain">
+        </picture>
+        <picture data-title="Water Reservoir">
+          <img id="water-reservoir" data-click="false" src="assets/images/water-reservoir.png" alt="Water Reservoir">
+        </picture>
       </div>
       <label for="latitude">Latitude:</label>
       <input type="number" name="latitude" id="latitude" placeholder="latitude">
@@ -68,13 +93,12 @@
       <button id="save-data-btn">Save and Add</button>
       <button class="close-btn" id="close-btn">×</button>
     </div>
-
     <!--Map-->
     <div id="map"></div>
   </section>
 
   <!--About Section-->
-  <section class="section about-container" id="ABOUT">
+  <section class="section about-section" id="ABOUT">
     <h1>About</h1>
     <p>
       <b>Find Me a Water</b> is a website that helps users find the availability of water sources in their area and also allows users to add information about water sources that are lacking. The website's primary goal is to provide a centralized platform for people to locate water sources and report any water scarcity they may encounter.
@@ -94,10 +118,10 @@
   </section>
 
   <!--Feedback Section-->
-  <section class="section feedback-container" id="FEEDBACK">
+  <section class="section feedback-section" id="FEEDBACK">
     <h1>FEEDBACK</h1>
     <div class="feedback-form">
-      <label for="email" >Email:</label>
+      <label for="email">Email:</label>
       <input type="email" name="email" id="email" placeholder="Email...">
       <label for="feedback">Feedback:</label>
       <textarea name="feedback" id="feedback" cols="10" rows="10" placeholder="Feedback here..."></textarea><br>

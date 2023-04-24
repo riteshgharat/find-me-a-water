@@ -5,9 +5,8 @@ const sections = document.querySelectorAll('section');
 window.addEventListener('load', () => {
   location.hash = 'HOME';
   updateUI('#HOME');
-  
-// to clean multiple console errors
-setInterval(() => console.clear(), 1000);
+  // to clean multiple console errors from map api
+  setInterval(() => console.clear(), 1000);
 });
 
 // on load change hash
@@ -19,17 +18,22 @@ window.addEventListener('hashchange', () => {
 function updateUI(hash) {
   hyperlinks.forEach(a => a.style.textDecoration = 'none');
 
-  setTimeout(() => {
-    sections.forEach(section => section.style.position = 'fixed');
-
-    document.querySelector(`${hash}`).style.position = 'relative';
-  }, 100);
-
-
   let h = hash.replace('#', '.');
   // highlighting anchor tag in navbar
   document.querySelector(`.navbar ul li ${h}`).style.textDecoration = 'underline';
+  document.querySelectorAll('section').forEach(s => { s.classList.remove('active') });
+  document.querySelector(`${hash}`).classList.add('active');
 }
+
+// Help PopUp Section
+const overlayer = document.querySelector('.overlayer');
+const helpPopUpAdd = document.querySelector('.help-btn');
+const helpPopUpRemove = document.querySelector('.help-popUp-btn');
+
+// Adding Help PopUp
+helpPopUpAdd.addEventListener('click', () => overlayer.classList.add('help-popUp-add'));
+// Removing Help PopUp
+helpPopUpRemove.addEventListener('click', () => overlayer.classList.remove('help-popUp-add'));
 
 //Feedback form
 const feedbackBtn = document.querySelector('#feedback-btn');

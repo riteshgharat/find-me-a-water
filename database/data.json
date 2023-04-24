@@ -4,13 +4,13 @@
   }, {
     "mode":"Availability of Water","type":"well","lat":"18.931490599669715","lng":"77.12223620646301","qty":"1000","info":"Water Available Here...","iconUrl":"well-blue.png"
   }, {
-    "mode":"Availability of Water","type":"public-water-center","lat":"18.29943255432947","lng":"74.95174124997385","qty":"10","info":"Need Water","iconUrl":"public-water-center-blue.png"
+    "mode":"Availability of Water","type":"public-water-fountain","lat":"18.29943255432947","lng":"74.95174124997385","qty":"10","info":"Need Water","iconUrl":"public-water-fountain-blue.png"
   }, {
     "mode":"Availability of Water","type":"tap","lat":"22.52046815634297","lng":"75.60580041843451","qty":"30","info":"Water","iconUrl":"tap-blue.png"
   }, {
     "mode":"Availability of Water","type":"well","lat":"22.520874493817615","lng":"75.60607936816845","qty":"30","info":"Water","iconUrl":"well-blue.png"
   }, {
-    "mode":"Availability of Water","type":"water-resources","lat":"15.072177157946726","lng":"75.76985783793282","qty":"1000","info":"Water Needed","iconUrl":"water-resources-blue.png"
+    "mode":"Availability of Water","type":"water-reservoir","lat":"15.072177157946726","lng":"75.76985783793282","qty":"1000","info":"Water Needed","iconUrl":"water-reservoir-blue.png"
   }, {
     "mode":"Lack of Water","type":"well","lat":"17.54237992391822","lng":"80.21586806990967","qty":"10000","info":"Water Needed","iconUrl":"well-red.png"
   }]}

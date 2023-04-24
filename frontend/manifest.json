@@ -2,7 +2,7 @@
   "name": "Find Me a Water",
   "short_name": "Find Me a Water",
   "version": "1.0.0",
-  "description": "Personal Website",
+  "description": "Find Me a Wateris a website that helps users find the availability of water sources in their area and also allows users to add information about water sources that are lacking. The website's primary goal is to provide a centralized platform for people to locate water sources and report any water scarcity they may encounter.",
   "icons": [
     {
       "src": "assets/icons/android-launchericon-512-512.png",

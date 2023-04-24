@@ -9,7 +9,7 @@
 :root {
   --blue1: #2FC0FF;
   --blue2: #77D9FF;
-
+  --white: #ffffff;
   --text: #26496F;
 }
 
@@ -41,7 +41,7 @@ img {
   border: none;
   border-radius: 3px;
   outline: none;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
@@ -60,11 +60,12 @@ button:active {
   top: 0;
   left: 0;
   z-index: 999;
-  background: #fff;
-  display: flex;
+  background: var(--white);
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  transition: .5s;
 }
 
 /* navbar */
@@ -75,9 +76,10 @@ button:active {
   align-items: center;
   position: fixed;
   top: 0;
-  background: #fff;
+  left: 0;
+  background: var(--white);
   padding: 0 20px;
-  z-index: 1;
+  z-index: 5;
 }
 
 .navbar .logo-small {
@@ -99,33 +101,44 @@ button:active {
   text-decoration: underline;
 }
 
-/* main-container (Home)*/
-section,
-.main-container {
+section {
   width: 100%;
   height: 100vh;
-  background: #fff;
+  background: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: fixed;
+  transition: .5s;
+  opacity: 0;
 }
 
-.main-container .logo {
+.main-section.active,
+.map-section.active,
+.about-section.active,
+.feedback-section.active {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+}
+
+/* main-section (Home)*/
+
+.main-section .logo {
   width: 300px;
 }
 
-.main-container .title {
+.main-section .title {
   font-size: 30px;
   font-weight: 900;
   margin-bottom: 20px;
   color: var(--text);
 }
 
-.main-container .map-btn {
+.main-section .map-btn {
   background: var(--blue1);
 }
-
 
 /* "i" icon tag */
 i {
@@ -137,7 +150,7 @@ i {
   display: inline-block;
 }
 
-.main-container .map-svg {
+.main-section .map-svg {
   background-repeat: no-repeat;
   background-size: cover;
   /* stretch the background to cover the whole element */
@@ -154,7 +167,7 @@ i {
 .layer {
   background: url("../assets/ui-images/layer.svg");
   fill: var(--blue1);
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   transform: rotate(180deg);
@@ -177,6 +190,7 @@ i {
   padding: 0;
   width: 100%;
   height: 100vh;
+  position: fixed;
 }
 
 #map .map-control {
@@ -186,20 +200,20 @@ i {
 /* Pop Up */
 .pop-up {
   width: 350px;
-  min-height: 100vh;
-  background: #fff;
+  min-height: calc(100vh - 60px);
+  background: var(--white);
   position: absolute;
-  top: 0;
+  top: 60px;
   left: 0;
   padding: 30px 20px 0;
   display: none;
   flex-direction: column;
   border-right: 2px solid var(--text);
-  z-index: 1;
+  z-index: 2;
 }
 
 .pop-up label,
-.feedback-container label {
+.feedback-section label {
   font-size: 16px;
   color: var(--text);
   font-weight: 700;
@@ -233,17 +247,7 @@ i {
   min-width: 30px;
   min-height: 30px;
   line-height: 20px;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.pop-up .close-btn {
-  min-width: 30px;
-  min-height: 30px;
-  line-height: 20px;
+  font-size: 20px;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -253,7 +257,7 @@ i {
 
 .types-con {
   width: auto;
-  height: auto;
+  height: 80px;
   display: inline-flex;
   justify-content: space-evenly;
 }
@@ -267,8 +271,102 @@ i {
   cursor: pointer;
 }
 
+[data-title]::after {
+  content: attr(data-title);
+  width: 50px;
+  height: 20px;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 900;
+  text-align: center;
+  position: absolute;
+  transform: translate(-50px, 55px);
+}
+
+
+/* Help Section */
+.help-btn {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 70px;
+  right: 10px;
+  z-index: 2;
+  border-radius: 50%;
+  background: var(--white);
+}
+
+.overlayer {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  z-index: 0;
+  opacity: 0;
+  transition: .2s;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.help-popUp {
+  width: 400px;
+  height: 300px;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 10px;
+  outline: 2px solid var(--text);
+}
+
+.help-popUp-add {
+  z-index: 2;
+  opacity: 1;
+}
+
+.help-popUp-content {
+  width: 100%;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.help-popUp-content h1 {
+  width: calc(100% - 30px);
+  padding-bottom: 5px;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  float: left;
+}
+
+.help-popUp-content hr {
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+}
+
+.help-popUp-content h3 {
+  padding: 5px 0;
+}
+
+.help-popUp-btn {
+  width: 30px;
+  height: 30px;
+  outline: none;
+  padding: 0 5px;
+  font-size: 20px;
+  font-weight: 500;
+  border: 2px solid var(--text);
+  border-radius: 5px;
+  cursor: pointer;
+  background: var(--blue2);
+  position: relative;
+  float: right;
+  float: inline-start;
+}
+
 /* Feedback form */
-.feedback-container h1 {
+.feedback-section h1 {
   color: var(--text);
   font-size: 25px;
 }
@@ -297,20 +395,28 @@ textarea:focus,
 }
 
 
-/* About container */
+/* About .main-section */
 
-.about-container {
+.about-section {
   display: block;
+  background: var(--white);
   padding: 60px 20px 0 25px;
   color: var(--text);
   font-size: 14px;
 }
 
-.about-container h1 {
+.about-section h1 {
   font-size: 25px;
   margin: 10px 0;
 }
 
-.about-container ul li {
+.about-section ul li {
   margin: 5px 0;
+}
+
+@media screen and (max-width: 450px) {
+  .help-popUp {
+    width: 90%;
+    height: auto;
+  }
 }
